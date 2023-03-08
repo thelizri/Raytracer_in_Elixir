@@ -8,27 +8,29 @@ defmodule Vector do
 	# dot product
 	# normalized vector
 
-	def scalarMultiplication(scalar, {a, b, c}) do
+	def scalarMul(scalar, {a, b, c}) do
 		{scalar*a, scalar*b, scalar*c}
 	end
 
-	def dotProduct({x, y, z}, {a, b, c}) do
+	def dot({x, y, z}, {a, b, c}) do
 		x*a + y*b + z*c
 	end
 
-	def subtraction({x, y, z}, {a, b, c}) do
+	def sub({x, y, z}, {a, b, c}) do
 		{x-a, y-b, z-c}
 	end
 
-	def addition({x, y, z}, {a, b, c}) do
+	def add({x, y, z}, {a, b, c}) do
 		{x+a, y+b, z+c}
 	end
 
+	#Gets the length of the vector
 	def norm({a, b, c}) do
 		normSquared = a*a + b*b + c*c
 		:math.sqrt(normSquared)
 	end
 
+	#Returns the vector with length 1
 	def normalized({a, b, c}) do
 		norm = norm({a, b, c})
 		{a/norm, b/norm, c/norm}

@@ -20,7 +20,23 @@ defmodule Sphere do
 	    r2 = radius*radius
 	    h2 = k2 - a2
 	    t2 = r2 - h2
-	    #closest(t2, a)
+	    cond do
+	    	t2 >= 0 -> closest(t2, a)
+	    	true -> :no
+	    end
+	end
+
+	def closest(t2, a) do
+		t = :math.sqrt(t2)
+		d1 = a+t
+		d2 = a-t
+		cond do
+			d1 < 0 and d2 < 0 -> {:no}
+			d1 < 0 -> {:ok, d2}
+			d2 < 0 -> {:ok, d1}
+			d1 < d2 -> {:ok, d1}
+			true -> {:ok, d2}
+		end
 	end
 
 end

@@ -11,12 +11,12 @@ defmodule Camera do
 		corner = {-horizontal, vertical, depth}
 	    right = {1, 0, 0}
 	    down = {0, -1, 0}
-	    %Camera{pos: pos, corner: corner, right: right, down: down, size: size}
+	    %Camera{pos: {0, 0, 0}, corner: corner, right: right, down: down, size: size}
 	end
 
 	#Gives back the ray that goes through given pixel
 	def ray(camera, x, y) do
-
+		nil
 	end
 
 end

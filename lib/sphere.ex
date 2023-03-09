@@ -37,8 +37,7 @@ defmodule Sphere do
 			d1 < 0 and d2 < 0 -> :no
 			d1 < 0 -> {:ok, d2}
 			d2 < 0 -> {:ok, d1}
-			d1 < d2 -> {:ok, d1}
-			true -> {:ok, d2}
+			true -> {:ok, min(d1, d2)}
 		end
 	end
 

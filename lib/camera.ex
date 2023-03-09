@@ -15,13 +15,13 @@ defmodule Camera do
 	end
 
 	#Gives back the ray that goes through given pixel
-	def ray(%Camera{pos: cameraPos, corner: corner, right: right, down: down, size: size}, column, row) do
+	def ray(%Camera{pos: origin, corner: corner, right: right, down: down, size: size}, column, row) do
 		x = Vector.scalarMul(column, right)
 		y = Vector.scalarMul(row, down)
 		v = Vector.add(x, y)
 		pos = Vector.add(corner, v)
 		dir = Vector.normalize(pos)
-		%Ray{pos: cameraPos, dir: dir}
+		%Ray{pos: origin, dir: dir}
 	end
 
 end

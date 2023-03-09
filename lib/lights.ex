@@ -1,23 +1,10 @@
 defmodule Light do
 
-	defstruct(pos: nil, color: {255, 255, 255})
+	defstruct(pos: nil, color: {1.0, 1.0, 1.0})
 
 	def illuminate(obj, ill, world) do
-		color = obj.color |> encode()
-		ill(color, mul(ill, world.ambient)) |> decode()
-	end
-
-	#Encode color to 0 <= rgb < 1
-	def encode({r, g, b}) do
-		{r/255, g/255, b/255}
-	end
-
-	#Decode color to 0 <= rgb < 256
-	def decode({r, g, b}) do
-		r = rem(round(r*255), 255)
-		g = rem(round(g*255), 255)
-		b = rem(round(b*255), 255)
-		{r, g, b}
+		color = obj.color
+		ill(color, mul(ill, world.ambient))
 	end
 
 	## combine the two lights 

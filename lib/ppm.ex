@@ -20,7 +20,14 @@ defmodule PPM do
   end
 
   defp row(row) do
-    Enum.reduce(row, [], fn({r, g, b}, a) -> [r, g, b| a] end)
+    result = Enum.reduce(row, [], fn({r, g, b}, a) -> [trunc(r * 255), trunc(g * 255), trunc(b * 255)| a] end)
+    Enum.each(result, fn(x)-> cond do
+      x > 255 -> IO.inspect(x)
+      x < 0 -> IO.inspect(x)
+      true -> nil
+    end
+  end)
+    result
   end
 
 end

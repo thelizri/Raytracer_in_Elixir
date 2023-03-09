@@ -1,6 +1,6 @@
 defmodule Sphere do
 
-	defstruct(pos: {0, 0, 0}, radius: 2, color: {255, 255, 255})
+	defstruct(pos: {0, 0, 0}, radius: 2, color: {1, 1, 1})
 
 	defimpl Object do
 		def intersect(sphere, ray) do
@@ -42,8 +42,8 @@ defmodule Sphere do
 	end
 
 	#Returns the normal of where the ray intersects with the sphere
-	def normal(%Sphere{pos: spherePos, radius: radius},  _, pos) do
-		Vector.sub(spherePos, pos)
+	def normal(sphere,  _, pos) do
+		Vector.sub(pos, sphere.pos)
 		|> Vector.normalize()
 	end
 

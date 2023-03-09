@@ -6,6 +6,9 @@ defmodule Sphere do
 		def intersect(sphere, ray) do
 			Sphere.intersect(sphere, ray)
 		end
+		def normal(sphere, ray, pos) do
+			Sphere.normal(sphere, ray, pos)
+		end
 	end
 
 	#Returns either :no or {:ok, d}, where d is the closest distance
@@ -25,6 +28,7 @@ defmodule Sphere do
 	    end
 	end
 
+	#Returns the closest distance if t2 is positive
 	def closest(t2, a) do
 		t = :math.sqrt(t2)
 		d1 = a+t
@@ -36,6 +40,12 @@ defmodule Sphere do
 			d1 < d2 -> {:ok, d1}
 			true -> {:ok, d2}
 		end
+	end
+
+	#Returns the normal of where the ray intersects with the sphere
+	def normal(%Sphere{pos: spherePos, radius: radius},  _, pos) do
+		Vector.sub(spherePos, pos)
+		|> Vector.normalize()
 	end
 
 end

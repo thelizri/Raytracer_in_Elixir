@@ -1,5 +1,6 @@
 defmodule Tracer do
 
+	@delta 0.001
 	@black {0, 0, 0}
 	@white {255, 255, 255}
 	@red {255, 0, 0}
@@ -25,7 +26,7 @@ defmodule Tracer do
 	def trace(ray, objects) do
 		case intersect(ray, objects) do
 			{:inf, _} -> @black
-			{_, object} -> object.color
+			{dist, object} -> object.color
 		end
 	end
 

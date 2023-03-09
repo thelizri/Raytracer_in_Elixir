@@ -1,5 +1,5 @@
 defmodule World do
 
-	defstruct(objects: [])
-	
+	defstruct(objects: [], lights: [], background: {0, 0, 0})
+
 end

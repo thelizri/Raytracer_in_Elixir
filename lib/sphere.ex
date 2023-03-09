@@ -1,6 +1,6 @@
 defmodule Sphere do
 
-	defstruct(pos: {0, 0, 0}, radius: 2)
+	defstruct(pos: {0, 0, 0}, radius: 2, color: {255, 255, 255})
 
 	defimpl Object do
 		def intersect(sphere, ray) do

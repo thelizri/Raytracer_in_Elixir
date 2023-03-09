@@ -25,7 +25,7 @@ defmodule Tracer do
 	def trace(ray, objects) do
 		case intersect(ray, objects) do
 			{:inf, _} -> @black
-			{_, _} -> @white
+			{_, object} -> object.color
 		end
 	end
 

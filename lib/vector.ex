@@ -31,7 +31,7 @@ defmodule Vector do
 	end
 
 	#Returns the vector with length 1
-	def normalized({a, b, c}) do
+	def normalize({a, b, c}) do
 		norm = norm({a, b, c})
 		{a/norm, b/norm, c/norm}
 	end

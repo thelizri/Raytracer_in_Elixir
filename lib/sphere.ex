@@ -7,12 +7,12 @@ defmodule Sphere do
 			Sphere.intersect(sphere, ray)
 		end
 	end
-	
+
 	#Returns either :no or {:ok, d}, where d is the closest distance
 	# If t2 is negative, the ray does not intersect the sphere
 	def intersect(%Sphere{pos: spherePos, radius: radius},  %Ray{pos: rayPos, dir: dir}) do
-		k = Vector.subtraction(spherePos, rayPos)
-	    a = Vector.dotProduct(dir, k)
+		k = Vector.sub(spherePos, rayPos)
+	    a = Vector.dot(dir, k)
 	    a2 = a*a
 	    normK = Vector.norm(k)
 	    k2 = normK*normK
@@ -30,7 +30,7 @@ defmodule Sphere do
 		d1 = a+t
 		d2 = a-t
 		cond do
-			d1 < 0 and d2 < 0 -> {:no}
+			d1 < 0 and d2 < 0 -> :no
 			d1 < 0 -> {:ok, d2}
 			d2 < 0 -> {:ok, d1}
 			d1 < d2 -> {:ok, d1}

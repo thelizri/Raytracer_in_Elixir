@@ -42,8 +42,8 @@ defmodule Sphere do
 	end
 
 	#Returns the normal of where the ray intersects with the sphere
-	def normal(%Sphere{pos: spherePos, radius: radius},  _, pos) do
-		Vector.sub(spherePos, pos)
+	def normal(sphere,  _, pos) do
+		Vector.sub(pos, sphere.pos)
 		|> Vector.normalize()
 	end
 

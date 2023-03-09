@@ -23,17 +23,17 @@ defmodule Tracer do
 	end
 
 	#More complicated version
-	#def trace(ray, %World{}=world) do
-	#    case intersect(ray, objects) do
-	#		{:inf, _} -> world.background
-	#		{dist, obj} ->
-	#			i = Vector.add(ray.pos, Vector.scalarMul(ray.dir, dist - @delta))
-	#			normal = Object.normal(obj,ray,i)
-	#			visible = visible(i, world.lights, objects)
-	#			illumination = Light.combine(i, normal, visible)
-	#			#Light.illuminate(obj, illumination, world)
-	#    end
-  	#end
+	def trace(ray, %World{}=world) do
+	    case intersect(ray, world.objects) do
+			{:inf, _} -> world.background
+			{dist, obj} ->
+				i = Vector.add(ray.pos, Vector.scalarMul(dist - @delta, ray.dir))
+				normal = Object.normal(obj,ray,i)
+				visible = visible(i, world.lights, world.objects)
+				illumination = Light.combine(i, normal, visible)
+				Light.illuminate(obj, illumination, world)
+	    end
+  	end
 
 	#Looks at the distance and returns a color
 	def trace(ray, objects) do
@@ -56,7 +56,7 @@ defmodule Tracer do
 	end
 
 
-	#Filter out lights that aren't shining on the point
+	#Returns the visible light sources
 	def visible(point, lights, objs) do
 		Enum.filter(lights, fn light -> clear(point, light.pos, objs) end)
 	end

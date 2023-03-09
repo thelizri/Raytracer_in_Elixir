@@ -20,7 +20,7 @@ defmodule PPM do
   end
 
   defp row(row) do
-    Enum.reduce(row, [], fn({r, g, b}, a) -> [r, g, b| a] end)
+    Enum.reduce(row, [], fn({r, g, b}, a) -> [r, g, b| a] end) |> IO.inspect()
   end
 
 end

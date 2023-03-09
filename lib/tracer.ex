@@ -51,25 +51,25 @@ defmodule Tracer do
 
 
 	#Returns the visible light sources
-	def visible(point, lights, objs) do
-		Enum.filter(lights, fn light -> clear(point, light.pos, objs) end)
-	end
+	# def visible(point, lights, objs) do
+	# 	Enum.filter(lights, fn light -> clear(point, light.pos, objs) end)
+	# end
 
 
 	#Determines if a certain point is visible by a certain ligth
-	def clear(point, origin, objs) do
-		#Vector between point and light origin
-		dir = Vector.normalize(Vector.sub(origin, point))
-		Enum.reduce(objs, true, fn (obj, acc) ->
-			case acc do
-				false -> false
-				true ->
-					case Object.intersect(obj, %Ray{pos: point, dir: dir}) do
-						:no -> true 
-						_ -> false #If light ray is intersected by any object, it's not visible
-					end
-			end
-		end)
-	end
+	# def clear(point, origin, objs) do
+	# 	#Vector between point and light origin
+	# 	dir = Vector.normalize(Vector.sub(origin, point))
+	# 	Enum.reduce(objs, true, fn (obj, acc) ->
+	# 		case acc do
+	# 			false -> false
+	# 			true ->
+	# 				case Object.intersect(obj, %Ray{pos: point, dir: dir}) do
+	# 					:no -> true 
+	# 					_ -> false #If light ray is intersected by any object, it's not visible
+	# 				end
+	# 		end
+	# 	end)
+	# end
 
 end

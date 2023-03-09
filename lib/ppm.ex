@@ -16,11 +16,11 @@ defmodule PPM do
   end
 
   defp rows(rows, file) do
-    Enum.each(rows, fn r -> IO.write(file, row(r)) end)
+    Enum.each(rows, fn r -> IO.binwrite(file, row(r)) end)
   end
 
   defp row(row) do
-    Enum.reduce(row, [], fn({r, g, b}, a) -> [r, g, b| a] end) |> IO.inspect()
+    Enum.reduce(row, [], fn({r, g, b}, a) -> [r, g, b| a] end)
   end
 
 end

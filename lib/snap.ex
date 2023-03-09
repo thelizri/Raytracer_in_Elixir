@@ -34,7 +34,7 @@ defmodule Snap do
 		world = %World{
 		objects: [obj1, obj2, obj3],
 		lights: [light1, light2, light3],
-		background: {0, 0, 30},
+		background: {0, 0, 0},
 		ambient: {0.6, 0.6, 0.6}}
 		image = Tracer.tracer(camera, world)
 		PPM.write("snap2.ppm", image)

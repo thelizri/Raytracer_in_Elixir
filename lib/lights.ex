@@ -14,9 +14,9 @@ defmodule Light do
 
 	#Decode color to 0 <= rgb < 256
 	def decode({r, g, b}) do
-		r = round(r*255)
-		g = round(g*255)
-		b = round(b*255)
+		r = rem(round(r*255), 255)
+		g = rem(round(g*255), 255)
+		b = rem(round(b*255), 255)
 		{r, g, b}
 	end
 

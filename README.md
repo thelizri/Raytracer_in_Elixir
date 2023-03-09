@@ -1,6 +1,6 @@
 # Raytracer
 
-**TODO: Add description**
+The Ray Tracer was an optional exercise in the Functional Programming course ID1019 at KTH.
 
 ## Installation
 

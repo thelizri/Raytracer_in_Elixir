@@ -2,13 +2,7 @@ defmodule Tracer do
 
 	@delta 0.001
 	@black {0, 0, 0}
-	@white {255, 255, 255}
-	@red {255, 0, 0}
-	@lime {0, 255, 0}
-	@blue {0, 0, 255}
-	@yellow {255, 255, 0}
-	@cyan {0, 255, 255}
-	@magenta {255, 0, 255}
+	@white {1.0, 1.0, 1.0}
 
 	#Will return a list of lists with tuples inside. Or, in other words, the matrix of the image
 	def tracer(camera, objects) do
@@ -23,17 +17,17 @@ defmodule Tracer do
 	end
 
 	#More complicated version
-	def trace(ray, %World{}=world) do
-	    case intersect(ray, world.objects) do
-			{:inf, _} -> world.background
-			{dist, obj} ->
-				i = Vector.add(ray.pos, Vector.scalarMul(dist - @delta, ray.dir))
-				normal = Object.normal(obj,ray,i)
-				visible = visible(i, world.lights, world.objects)
-				illumination = Light.combine(i, normal, visible)
-				Light.illuminate(obj, illumination, world)
-	    end
-  	end
+	# def trace(ray, %World{}=world) do
+	#     case intersect(ray, world.objects) do
+	# 		{:inf, _} -> world.background
+	# 		{dist, obj} ->
+	# 			i = Vector.add(ray.pos, Vector.scalarMul(dist - @delta, ray.dir))
+	# 			normal = Object.normal(obj,ray,i)
+	# 			visible = visible(i, world.lights, world.objects)
+	# 			illumination = Light.combine(i, normal, visible)
+	# 			Light.illuminate(obj, illumination, world)
+	#     end
+  	# end
 
 	#Looks at the distance and returns a color
 	def trace(ray, objects) do

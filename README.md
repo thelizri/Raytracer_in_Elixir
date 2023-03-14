@@ -1,6 +1,6 @@
 # Raytracer
 
-The Ray Tracer was an optional exercise in the Functional Programming course ID1019 at KTH.
+The Ray Tracer was an optional exercise in the Functional Programming course ID1019 at KTH. It's mostly the same code our professor used in the seminar. Though I tried to implement most of it myself. [Here's the link to the professor's ray tracer in Elixir, if you want to see the original](https://github.com/ID1019/functional-programming/tree/master/exercises/tracer/src)
 
 ## Installation
 

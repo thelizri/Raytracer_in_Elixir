@@ -12,6 +12,10 @@ defmodule Vector do
 		{scalar*a, scalar*b, scalar*c}
 	end
 
+	def scalarMul({a, b, c}, scalar) do
+		{scalar*a, scalar*b, scalar*c}
+	end
+
 	def dot({x, y, z}, {a, b, c}) do
 		x*a + y*b + z*c
 	end

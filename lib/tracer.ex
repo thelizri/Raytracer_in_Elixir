@@ -11,9 +11,32 @@ defmodule Tracer do
 	end
 
 	#Finds the ray that points to that pixel and returns the color
+	def trace(x, y, camera, %World{}=world) do
+		ray = Camera.ray(camera, x, y)
+		trace(ray, world.depth, world)
+	end
+
 	def trace(x, y, camera, objects) do
 		ray = Camera.ray(camera, x, y)
 		trace(ray, objects)
+	end
+
+	#Adding reflections
+	def trace(_ray, 0, world) do
+		world.background
+	end
+	def trace(ray, depth, world) do
+		case intersect(ray, world.objects) do
+			{:inf, _} -> world.background
+			{dist, obj} ->
+				i = Vector.add(ray.pos, Vector.scalarMul(dist - @delta, ray.dir))
+				normal = Object.normal(obj, ray, i)
+				visible = visible(i, world.lights, world.objects)
+				illumination = Light.combine(i, normal, visible)
+				r = %Ray{pos: i, dir: reflection(ray.dir, normal)}
+				reflection = trace(r, depth - 1, world)
+				Light.illuminate(obj, reflection, illumination, world)
+		end
 	end
 
 	#Adding lights
@@ -70,6 +93,11 @@ defmodule Tracer do
 					end
 			end
 		end)
+	end
+
+	#Reflections
+	def reflection(l, n) do
+		Vector.sub(l, Vector.scalarMul(n, 2 * Vector.dot(l, n)))
 	end
 
 end

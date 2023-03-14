@@ -2,6 +2,11 @@ defmodule Light do
 
 	defstruct(pos: nil, color: {1.0, 1.0, 1.0})
 
+	def illuminate(obj, refl, ill, world) do
+	    surface = ill(obj.color, mul(ill, world.ambient))
+	    mul(surface, mod(refl, obj.brilliance))
+  	end
+
 	def illuminate(obj, ill, world) do
 		color = obj.color
 		ill(color, mul(ill, world.ambient))
@@ -34,6 +39,11 @@ defmodule Light do
 		# this can happen around edges of planes
 			{0,0,0}
 		end
+	end
+
+	## reduce a light 
+	def mod({r1, g1, b1}, t) do
+		{r1 * t, g1 * t, b1 * t}
 	end
 	
 end

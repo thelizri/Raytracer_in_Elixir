@@ -19,3 +19,16 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/raytracer>.
 
+## Images Generated with the program
+
+Snap.snap(0)  
+![Snap 0](https://github.com/thelizri/Raytracer_in_Elixir/blob/main/example_images/Snap0.PNG)
+
+Snap.snap(1)  
+![Snap 1](https://github.com/thelizri/Raytracer_in_Elixir/blob/main/example_images/Snap1.PNG)
+
+Snap.snap(2)  
+![Snap 2](https://github.com/thelizri/Raytracer_in_Elixir/blob/main/example_images/Snap2.PNG)
+
+Snap.snap(3)  
+![Snap 3](https://github.com/thelizri/Raytracer_in_Elixir/blob/main/example_images/Snap3.PNG)
